@@ -1,6 +1,8 @@
 <p>course-table works!</p>
 <ul>
-    <li *ngFor="let eachCourse of courses">
-        {{eachCourse.title}}
+    <li *ngFor="let eachCourse of courses.sort(sortCourses)">
+        <a routerLink="/table/courses/{{eachCourse._id}}/modules">
+            {{eachCourse.courseTitle}}
+        </a>
     </li>
 </ul>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CourseServiceClient } from '../../services/CourseServiceClient'
+
 @Component({
   selector: 'app-course-table',
   templateUrl: './course-table.component.html',
@@ -7,17 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: CourseServiceClient) {
 
-  courses = [
-    {"id": 1, "title": "Course 01"},
-    {"id": 2, "title": "Course 02"},
-    {"id": 3, "title": "Course 03"},
-    {"id": 4, "title": "Course 04"}
-  ]
-
-  ngOnInit(): void {
-    
   }
 
+  courses = [];
+
+  sortCourses = (itemOne, itemTwo) => {
+    return itemOne - itemTwo;
+  }
+
+  ngOnInit(): void {
+    this.service.findAllCourses().then(allCourses => this.courses = allCourses);
+  }
 }
