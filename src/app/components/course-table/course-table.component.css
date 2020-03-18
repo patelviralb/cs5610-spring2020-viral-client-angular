@@ -1,0 +1,28 @@
+.vp-cs5610-course-list-span {
+    color: white;
+    font-size: x-large;
+}
+
+.vp-cs5610-table-layout {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.vp-cs5610-title-column-width {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  width: 60%;
+}
+
+.vp-cs5610-owner-column-width {
+  width: 15%;
+}
+
+.vp-cs5610-modified-column-width {
+  width: 15%;
+}
+
+.vp-cs5610-extra-column-width {
+  width: 10%;
+}

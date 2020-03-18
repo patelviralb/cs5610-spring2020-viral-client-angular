@@ -1,8 +1,67 @@
-<p>course-table works!</p>
+<div>
+    <div>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <div class="d-flex flex-row my-0 justify-content-start">
+                <!-- <button class="btn btn-lg btn-dark" type="button">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+                <label class="p-2 d-none d-lg-block vp-cs5610-course-list-span my-0">
+                    Courses
+                </label>
+            </div>
+        </nav>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end">
+        <a routerLink="/table/courses" class="btn btn-link text-dark"><i class="fas fa-th" title="Grid View"></i></a>
+    </div>
+
+    <div>
+        <table class="table table-striped vp-cs5610-table-layout">
+
+            <thead>
+                <tr>
+                    <th scope="col" class="vp-cs5610-title-column-width pl-5">
+                        Title
+                    </th>
+                    <!-- <th scope="col" class="d-sm-table-cell d-none vp-cs5610-owner-column-width">
+                        Owned By <i class="fas fa-fw fa-sort"></i>
+                    </th> -->
+                    <th scope="col" class="d-md-table-cell d-none vp-cs5610-modified-column-width">
+                        Last Modified date
+                    </th>
+                    <th scope="col" class="">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eachCourse of courses.sort(sortCourses)">
+                    <td scope="col" class="vp-cs5610-title-column-width pl-5">
+                        <a routerLink="/table/courses/{{eachCourse._id}}/modules">
+                            {{eachCourse.courseTitle}}
+                        </a>
+                    </td>
+                    <!-- <td scope="col" class="d-sm-table-cell d-none vp-cs5610-owner-column-width">
+                        {{eachCourse.courseTitle}}
+                    </td> -->
+                    <td scope="col" class="d-md-table-cell d-none vp-cs5610-modified-column-width">
+                        {{eachCourse.dateModified}}
+                    </td>
+                    <td scope="col" class="">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- <p>course-table works!</p>
 <ul>
     <li *ngFor="let eachCourse of courses.sort(sortCourses)">
         <a routerLink="/table/courses/{{eachCourse._id}}/modules">
             {{eachCourse.courseTitle}}
         </a>
     </li>
-</ul>
+</ul> -->
