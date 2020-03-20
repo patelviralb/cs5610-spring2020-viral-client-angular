@@ -24,7 +24,7 @@
 
 <div *ngIf="!showNoModuleSelectionWarning && !showNoLessonWarning" class="nav nav-tabs">
     <div *ngFor="let eachLesson of moduleLessons" class="nav-item mt-3 ml-2">
-        <a routerLink="/{{layout}}/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{eachLesson._id}}"
+        <a routerLink="/{{layout}}/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{eachLesson._id}}/topics"
             class="nav-link" [class]="{'active':eachLesson._id === lessonId}"
             title="{{eachLesson.lessonName}}">
             {{eachLesson.lessonName}}
