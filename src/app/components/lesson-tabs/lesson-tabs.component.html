@@ -1,0 +1,33 @@
+<div *ngIf="showNoModuleSelectionWarning" class="alert alert-secondary mt-2" role="alert">
+    <div class="d-flex justify-content-center">
+        <i class="fas fa-2x fa-exclamation-triangle"></i>
+    </div>
+    <label class="d-flex justify-content-center">
+        No Module selected.
+    </label>
+    <label class="d-flex justify-content-center">
+        Please select a module to view lessons.
+    </label>
+</div>
+
+<div *ngIf="showNoLessonWarning" class="alert alert-warning mt-2" role="alert">
+    <div class="d-flex justify-content-center">
+        <i class="fas fa-2x fa-exclamation-triangle"></i>
+    </div>
+    <label class="d-flex justify-content-center">
+        No Lessons found for selected module.
+    </label>
+    <label class="d-flex justify-content-center">
+        Please check back later.
+    </label>
+</div>
+
+<div *ngIf="!showNoModuleSelectionWarning && !showNoLessonWarning" class="nav nav-tabs">
+    <div *ngFor="let eachLesson of moduleLessons" class="nav-item mt-3 ml-2">
+        <a routerLink="/{{layout}}/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{eachLesson._id}}"
+            class="nav-link" [class]="{'active':eachLesson._id === lessonId}"
+            title="{{eachLesson.lessonName}}">
+            {{eachLesson.lessonName}}
+        </a>
+    </div>
+</div>
