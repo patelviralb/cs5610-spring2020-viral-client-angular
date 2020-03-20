@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { COURSE_API_URL } from '../common/constants'
-
 @Injectable()
 export class CourseServiceClient {
     findAllCourses = () =>
-        fetch(`${COURSE_API_URL}`).then(response => response.json());
+        fetch(`https://wbdv-generic-server.herokuapp.com/api/001374158/courses`).then(response => response.json());
 
     findCourseById = (courseId) =>
-        fetch(`${COURSE_API_URL}/${courseId}`).then(response => response.json());
+        fetch(`https://wbdv-generic-server.herokuapp.com/api/001374158/courses/${courseId}`).then(response => response.json());
 }
