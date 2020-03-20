@@ -8,20 +8,26 @@ import { CourseTableComponent } from './components/course-table/course-table.com
 import {CourseServiceClient} from '../app/services/CourseServiceClient';
 import { CourseViewerComponent } from './components/course-viewer/course-viewer.component';
 import { HomeComponent } from './components/home/home.component';
+import { ModuleListComponent } from './components/module-list/module-list.component';
+import { ModuleServiceClient } from './services/ModuleServiceClient';
+import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseTableComponent,
     CourseViewerComponent,
-    HomeComponent
+    HomeComponent,
+    ModuleListComponent,
+    LessonTabsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [
-    CourseServiceClient
+    CourseServiceClient,
+    ModuleServiceClient
   ],
   bootstrap: [AppComponent]
 })

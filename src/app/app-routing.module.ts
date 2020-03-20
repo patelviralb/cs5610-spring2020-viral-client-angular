@@ -8,8 +8,10 @@ import { CourseViewerComponent } from './components/course-viewer/course-viewer.
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'table/courses', component: CourseTableComponent},
-  {path:':layout/courses/:courseId/modules', component: CourseViewerComponent}
+  {path:':layout/courses', component: CourseTableComponent},
+  {path:':layout/courses/:courseId/modules', component: CourseViewerComponent},
+  {path:':layout/courses/:courseId/modules/:moduleId', component: CourseViewerComponent},
+  {path:':layout/courses/:courseId/modules/:moduleId/lessons/:lessonId', component: CourseViewerComponent}
 ];
 
 @NgModule({

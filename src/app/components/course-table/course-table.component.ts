@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { CourseServiceClient } from '../../services/CourseServiceClient'
@@ -9,17 +10,19 @@ import { CourseServiceClient } from '../../services/CourseServiceClient'
 })
 export class CourseTableComponent implements OnInit {
 
-  constructor(private service: CourseServiceClient) {
+  constructor(private route: ActivatedRoute, private service: CourseServiceClient) {
 
   }
 
+  layout = '';
   courses = [];
 
-  sortCourses = (itemOne, itemTwo) => {
-    return itemOne - itemTwo;
-  }
-
   ngOnInit(): void {
-    this.service.findAllCourses().then(allCourses => this.courses = allCourses);
+    this.route.params.subscribe(params => {
+      this.layout = params.layout;
+      this.service.findAllCourses().then(allCourses => {
+        this.courses = allCourses;
+      });
+    })
   }
 }

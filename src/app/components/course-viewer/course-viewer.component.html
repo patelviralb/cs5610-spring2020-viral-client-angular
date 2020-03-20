@@ -1,1 +1,26 @@
-<p>course-viewer works!</p>
+<div>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="d-flex flex-row my-0 justify-content-start pt-sm-3 pt-md-0">
+            <a routerLink="/{{layout}}/courses/" class="btn btn-sm btn-dark close vp-cs5610-close-course-editor">
+                <span class="p-1 text-white">&#10005;</span>
+            </a>
+            <span class="p-2 vp-cs5610-course-editor-span ml-2">
+                {{courseDetails.courseTitle}}
+            </span>
+        </div>
+    </nav>
+    <div class="container-fluid ml-n3 mr-n3">
+        <div class="row vp-cs5610-course-editor-division">
+            <div class="col-lg-3 col-12 vp-cs5610-module-list">
+                <app-module-list></app-module-list>
+            </div>
+            <div class="col-lg-9 col-12 ml-2 ml-lg-0">
+                <app-lesson-tabs></app-lesson-tabs>
+                <!-- <Topics></Topics>
+                <Widgets></Widgets> -->
+            </div>
+            <!-- <CourseModuleComponent history={history} match={match} />
+            <CourseModuleDetails history={history} match={match} /> -->
+        </div>
+    </div>
+</div>

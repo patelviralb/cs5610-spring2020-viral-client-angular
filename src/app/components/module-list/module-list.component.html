@@ -1,0 +1,23 @@
+<div *ngIf="showWarning" class="alert alert-warning mt-2" role="alert">
+    <div class="d-flex justify-content-center">
+        <i class="fas fa-2x fa-exclamation-triangle"></i>
+    </div>
+    <label class="d-flex justify-content-center">
+        No Modules found for selected course.
+    </label>
+    <label class="d-flex justify-content-center">
+        Please check back later.
+    </label>
+</div>
+<div *ngIf="!showWarning">
+    <div *ngFor="let eachModule of courseModules" class="d-flex justify-content-center mt-4">
+        <div class="row w-100 vp-cs5610-each-module">
+            <button class="btn col-12 vp-cs5610-module-title btn-dark d-flex justify-content-center pt-3"
+                [class]="{'bg-success': eachModule._id === moduleId}"
+                routerLink="/{{layout}}/courses/{{courseId}}/modules/{{eachModule._id}}"
+                title="{{eachModule.moduleName}}">
+                {{eachModule.moduleName}}
+            </button>
+        </div>
+    </div>
+</div>

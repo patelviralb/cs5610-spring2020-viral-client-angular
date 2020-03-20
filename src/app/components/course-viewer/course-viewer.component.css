@@ -1,0 +1,19 @@
+.vp-cs5610-close-course-editor {
+    padding: 0.75rem;
+}
+
+.vp-cs5610-course-editor-span {
+    color: white;
+    font-size: x-large;
+}
+
+.vp-cs5610-course-editor-division {
+    min-height: 90vh;
+    margin-right: -1.95rem;
+}
+
+.vp-cs5610-module-list {
+    /* background-color: #1b1e21; */
+    background-color: white;
+    padding-left: 2.00rem;
+}

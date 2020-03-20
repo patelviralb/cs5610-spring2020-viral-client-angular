@@ -5,7 +5,7 @@
                 <!-- <button class="btn btn-lg btn-dark" type="button">
                     <i class="fas fa-bars"></i>
                 </button> -->
-                <label class="p-2 d-none d-lg-block vp-cs5610-course-list-span my-0">
+                <label class="p-2 d-none d-block vp-cs5610-course-list-span my-0">
                     Courses
                 </label>
             </div>
@@ -36,15 +36,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let eachCourse of courses.sort(sortCourses)">
-                    <td scope="col" class="vp-cs5610-title-column-width pl-5">
-                        <a routerLink="/table/courses/{{eachCourse._id}}/modules">
+                <tr *ngFor="let eachCourse of courses">
+                    <a routerLink="/{{layout}}/courses/{{eachCourse._id}}/modules">
+                        <td scope="col" class="vp-cs5610-title-column-width pl-5">
+                            <i class="fas fa-book mt-1 text-dark"></i>
                             {{eachCourse.courseTitle}}
-                        </a>
-                    </td>
+                        </td>
+                    </a>
                     <!-- <td scope="col" class="d-sm-table-cell d-none vp-cs5610-owner-column-width">
-                        {{eachCourse.courseTitle}}
-                    </td> -->
+                            {{eachCourse.courseTitle}}
+                        </td> -->
                     <td scope="col" class="d-md-table-cell d-none vp-cs5610-modified-column-width">
                         {{eachCourse.dateModified}}
                     </td>
@@ -59,7 +60,7 @@
 
 <!-- <p>course-table works!</p>
 <ul>
-    <li *ngFor="let eachCourse of courses.sort(sortCourses)">
+    <li *ngFor="let eachCourse of courses">
         <a routerLink="/table/courses/{{eachCourse._id}}/modules">
             {{eachCourse.courseTitle}}
         </a>
