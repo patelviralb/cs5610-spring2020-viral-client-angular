@@ -12,6 +12,9 @@ import { ModuleListComponent } from './components/module-list/module-list.compon
 import { ModuleServiceClient } from './services/ModuleServiceClient';
 import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.component';
 import { Constants } from './common/Constants';
+import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import {QuizServiceClient} from './services/QuizServiceClient';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { Constants } from './common/Constants';
     CourseViewerComponent,
     HomeComponent,
     ModuleListComponent,
-    LessonTabsComponent
+    LessonTabsComponent,
+    QuizzesComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,7 @@ import { Constants } from './common/Constants';
   providers: [
     CourseServiceClient,
     ModuleServiceClient,
+    QuizServiceClient,
     Constants
   ],
   bootstrap: [AppComponent]

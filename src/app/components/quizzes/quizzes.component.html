@@ -1,0 +1,23 @@
+<div>
+  <div>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <span class="vp-cs5610-quizzes-list-span">
+        Quizzes
+      </span>
+      <span class="ml-5 text-white btn btn-link" routerLink="/{{layout}}/courses">Courses</span>
+    </nav>
+  </div>
+  <div class="container">
+    <ul class="list-group">
+      <li *ngFor="let eachQuiz of quizzes" class="list-group-item">
+        <a routerLink="/{{layout}}/courses/{{courseId}}/quizzes/{{eachQuiz._id}}">
+          {{eachQuiz.title}}
+        </a>
+        <a class="btn btn-primary float-right"
+           routerLink="/{{layout}}/courses/{{courseId}}/quizzes/{{eachQuiz._id}}">
+          Start
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
