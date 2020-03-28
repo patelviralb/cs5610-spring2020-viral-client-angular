@@ -14,7 +14,6 @@ import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.compon
 import { Constants } from './common/Constants';
 import { QuizzesComponent } from './components/quizzes/quizzes.component';
 import {QuizServiceClient} from './services/QuizServiceClient';
-import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
     HomeComponent,
     ModuleListComponent,
     LessonTabsComponent,
-    QuizzesComponent,
-    QuizComponent
+    QuizzesComponent
   ],
   imports: [
     BrowserModule,
