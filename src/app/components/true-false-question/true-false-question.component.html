@@ -1,0 +1,43 @@
+<div class="container">
+  <h4>{{question.question}}</h4>
+  <label class="form-control"
+         [class]="{'alert-primary': selectedAnswer === 'true',
+         'alert-success': (gradeAnswer === true && question.correct === 'true'),
+         'alert-danger': (gradeAnswer === true && question.correct !== 'true' && selectedAnswer !== question.correct),
+         'disabled': gradeAnswer === true}">
+    <input [(ngModel)]="selectedAnswer" type="radio" value="true" name="{{question._id}}"
+           [disabled]="gradeAnswer" /> True
+
+    <span class="d-none float-right"
+          [class]="{'d-block': gradeAnswer === true && question.correct === 'true'}">
+      <i class="fa fa-check"></i>
+    </span>
+
+    <span class="d-none float-right"
+          [class]="{'d-block': gradeAnswer === true && question.correct !== 'true' && selectedAnswer !== question.correct}">
+      <i class="fa fa-times"></i>
+    </span>
+  </label>
+  <label class="form-control"
+         [class]="{'alert-primary': selectedAnswer === 'false',
+         'alert-success': (gradeAnswer === true && question.correct === 'false'),
+         'alert-danger': (gradeAnswer === true && question.correct !== 'false' && selectedAnswer !== question.correct),
+         'disabled': gradeAnswer === true}">
+    <input [(ngModel)]="selectedAnswer" type="radio" value="false" name="{{question._id}}"
+           [disabled]="gradeAnswer"/> False
+
+    <span class="d-none float-right"
+          [class]="{'d-block': gradeAnswer === true && question.correct === 'false'}">
+      <i class="fa fa-check"></i>
+    </span>
+
+    <span class="d-none float-right"
+          [class]="{'d-block': gradeAnswer === true && question.correct !== 'false' && selectedAnswer !== question.correct}">
+      <i class="fa fa-times"></i>
+    </span>
+  </label>
+  <button class="btn btn-primary" (click)="grade()"
+         [disabled]="gradeAnswer === true || selectedAnswer === ''">
+    Grade
+  </button>
+</div>
