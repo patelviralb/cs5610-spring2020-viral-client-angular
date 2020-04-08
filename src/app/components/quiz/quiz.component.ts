@@ -22,14 +22,11 @@ export class QuizComponent implements OnInit {
   quizId = '';
   quizTitle = '';
   questions = [];
-  quizAttempt = [];
-  score = '';
 
   submitQuiz = () => {
     this.quizAttemptService.submitAttempt(this.quizId, this.questions)
       .then(result => {
-        this.quizAttempt = result;
-        location.reload();
+        console.log('DEBUG: RESULT', result);
       });
   };
 
@@ -45,13 +42,6 @@ export class QuizComponent implements OnInit {
 
       this.questionService.findAllQuestions(this.quizId).then(allQuestions => {
         this.questions = allQuestions;
-      });
-
-      this.quizAttemptService.getAttempt(this.quizId).then(attempt => {
-        this.quizAttempt = attempt;
-        if (this.quizAttempt.length !== 0) {
-          this.score = this.quizAttempt[0].score;
-        }
       });
     });
   }

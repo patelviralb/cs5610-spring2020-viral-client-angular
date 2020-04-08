@@ -13,11 +13,6 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   constructor(private route: ActivatedRoute, private quizAttemptService: QuizAttemptServiceClient) {
   }
 
-  quizId = '';
-  quizAttempt = [];
-  submittedAnswer = '';
-  correctAnswer = '';
-
   @Input()
   question = {
     _id: '',
@@ -35,25 +30,8 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   submitAnswer = () =>
     this.answerChange.emit(this.answer);
 
-  findAnswers = () => {
-    this.quizAttempt.forEach(eachAttempt => {
-      eachAttempt.answers.forEach(eachQuestion => {
-        if(eachQuestion._id === this.question._id) {
-          this.submittedAnswer = eachQuestion.answer;
-          this.correctAnswer = eachQuestion.correct;
-        }
-      });
-    });
-  };
-
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.quizId = params.quizId;
 
-      this.quizAttemptService.getAttempt(this.quizId).then(attempt =>
-        this.quizAttempt = attempt
-      ).then(status => this.findAnswers());
-    });
   }
 
 }
