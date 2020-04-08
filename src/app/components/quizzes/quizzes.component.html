@@ -23,7 +23,7 @@
         <div class="" *ngFor="let attemptArray of attempts">
           <ul class="list-group" *ngFor="let eachAttempt of attemptArray; let i=index">
             <li class="alert-warning list-group-item" *ngIf="eachAttempt.quizzes._id === eachQuiz._id">
-              Attempt {{i+1}} - Score: {{eachAttempt.score}}
+              Attempt {{i+1}} - Score: {{eachAttempt.score}} %
             </li>
           </ul>
         </div>
