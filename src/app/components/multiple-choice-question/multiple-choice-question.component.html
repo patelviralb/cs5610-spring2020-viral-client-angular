@@ -1,38 +1,11 @@
 <div class="container">
   <h4>
     {{question.question}}
-    <span class="d-none float-right text-success"
-          [class]="{'d-block': gradeAnswer === true && question.correct === selectedAnswer}">
-      <i class="fa fa-check"></i>
-    </span>
-    <span class="d-none float-right text-danger"
-          [class]="{'d-block': gradeAnswer === true && question.correct !== selectedAnswer}">
-      <i class="fa fa-times"></i>
-    </span>
   </h4>
 
-
   <label class="form-control"
-         [class]="{'alert-primary': selectedAnswer === 'true',
-         'alert-success': (gradeAnswer === true && question.correct === eachOption),
-         'alert-danger': (gradeAnswer === true && question.correct !== eachOption && selectedAnswer !== question.correct && selectedAnswer === eachOption),
-         'disabled': gradeAnswer === true}"
+         [class]="{'alert-primary': answer === eachOption}"
          *ngFor="let eachOption of question.choices">
-    <input [(ngModel)]="selectedAnswer" type="radio" value="{{eachOption}}" name="{{question._id}}"
-           [disabled]="gradeAnswer"/> {{eachOption}}
-
-    <span class="d-none float-right"
-          [class]="{'d-block': gradeAnswer === true && question.correct === eachOption}">
-      <i class="fa fa-check"></i>
-    </span>
-    <span class="d-none float-right"
-          [class]="{'d-block': gradeAnswer === true && question.correct !== eachOption && selectedAnswer !== question.correct && selectedAnswer === eachOption}">
-      <i class="fa fa-times"></i>
-    </span>
+    <input [(ngModel)]="answer" type="radio" value="{{eachOption}}" name="{{question._id}}" (change)="submitAnswer()" /> {{eachOption}}
   </label>
-
-  <button class="btn btn-primary" (click)="grade()"
-          [disabled]="gradeAnswer === true || selectedAnswer === ''">
-    Grade
-  </button>
 </div>

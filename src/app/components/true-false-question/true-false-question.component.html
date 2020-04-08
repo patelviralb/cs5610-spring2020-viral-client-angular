@@ -1,6 +1,23 @@
 <div class="container">
   <h4>
     {{question.question}}
+  </h4>
+
+  <label class="form-control"
+         [class]="{'alert-primary': answer === 'true'}">
+    <input [(ngModel)]="answer" type="radio" value="true" name="{{question._id}}" (change)="submitAnswer()" /> True
+  </label>
+  <label class="form-control"
+         [class]="{'alert-primary': answer === 'false'}">
+    <input [(ngModel)]="answer" type="radio" value="false" name="{{question._id}}" (change)="submitAnswer()" /> False
+  </label>
+</div>
+
+
+<!--
+<div class="container">
+  <h4>
+    {{question.question}}
     <span class="d-none float-right text-success"
           [class]="{'d-block': gradeAnswer === true && question.correct === selectedAnswer}">
       <i class="fa fa-check"></i>
@@ -51,3 +68,4 @@
     Grade
   </button>
 </div>
+-->

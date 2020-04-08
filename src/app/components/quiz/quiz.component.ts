@@ -19,6 +19,17 @@ export class QuizComponent implements OnInit {
   quizTitle = '';
   questions = [];
 
+  submitQuiz = () => {
+    fetch(`https://vp-cs5610-sp2020a9-server-node.herokuapp.com/api/quizzes/${this.quizId}/attempts`, {
+      method: 'POST',
+      body: JSON.stringify(this.questions),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json())
+      .then(result => console.log(result));
+  };
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.layout = params.layout;
@@ -31,7 +42,6 @@ export class QuizComponent implements OnInit {
 
       this.questionService.findAllQuestions(this.quizId).then(allQuestions => {
         this.questions = allQuestions;
-        console.table('DEBUG: All Questions', this.questions);
       });
     });
   }
