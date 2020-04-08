@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {QuestionServiceClient} from '../../services/QuestionServiceClient';
 import {QuizServiceClient} from '../../services/QuizServiceClient';
+import {QuizAttemptServiceClient} from '../../services/QuizAttemptServiceClient';
 
 @Component({
   selector: 'app-quiz',
@@ -10,7 +11,10 @@ import {QuizServiceClient} from '../../services/QuizServiceClient';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private questionService: QuestionServiceClient, private quizService: QuizServiceClient) {
+  constructor(private route: ActivatedRoute,
+              private questionService: QuestionServiceClient,
+              private quizService: QuizServiceClient,
+              private quizAttemptService: QuizAttemptServiceClient) {
   }
 
   layout = '';
@@ -18,16 +22,15 @@ export class QuizComponent implements OnInit {
   quizId = '';
   quizTitle = '';
   questions = [];
+  quizAttempt = [];
+  score = '';
 
   submitQuiz = () => {
-    fetch(`https://vp-cs5610-sp2020a9-server-node.herokuapp.com/api/quizzes/${this.quizId}/attempts`, {
-      method: 'POST',
-      body: JSON.stringify(this.questions),
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(response => response.json())
-      .then(result => console.log(result));
+    this.quizAttemptService.submitAttempt(this.quizId, this.questions)
+      .then(result => {
+        this.quizAttempt = result;
+        location.reload();
+      });
   };
 
   ngOnInit(): void {
@@ -42,6 +45,13 @@ export class QuizComponent implements OnInit {
 
       this.questionService.findAllQuestions(this.quizId).then(allQuestions => {
         this.questions = allQuestions;
+      });
+
+      this.quizAttemptService.getAttempt(this.quizId).then(attempt => {
+        this.quizAttempt = attempt;
+        if (this.quizAttempt.length !== 0) {
+          this.score = this.quizAttempt[0].score;
+        }
       });
     });
   }

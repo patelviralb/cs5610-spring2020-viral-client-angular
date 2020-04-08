@@ -11,7 +11,13 @@
     </nav>
   </div>
   <div class="container">
-    <ul class="list-group">
+    <div class="alert-warning form-control mt-4 d-none"
+         [class]="{'d-flex': this.score !== '',
+         'justify-content-center': this.score !== ''}">
+        Score: {{this.score}}
+    </div>
+
+    <ul class="list-group mt-4">
       <li *ngFor="let eachQuestion of questions" class="list-group-item"
           [ngSwitch]="eachQuestion.type">
         <app-true-false-question [question]="eachQuestion"
@@ -23,8 +29,9 @@
           *ngSwitchCase="'MULTIPLE_CHOICE'"></app-multiple-choice-question>
       </li>
     </ul>
-    <div class="mt-5">
-      <button class="btn btn-primary" (click)="submitQuiz()">
+    <div class="mt-5" [class]="{'d-none': this.quizAttempt.length !== 0}">
+      <button class="btn btn-primary"
+              (click)="submitQuiz()">
         Submit Quiz
       </button>
     </div>

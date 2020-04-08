@@ -19,6 +19,7 @@ import {QuestionServiceClient} from './services/QuestionServiceClient';
 import { TrueFalseQuestionComponent } from './components/true-false-question/true-false-question.component';
 import { MultipleChoiceQuestionComponent } from './components/multiple-choice-question/multiple-choice-question.component';
 import {FormsModule} from '@angular/forms';
+import {QuizAttemptServiceClient} from './services/QuizAttemptServiceClient';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {FormsModule} from '@angular/forms';
     ModuleServiceClient,
     QuizServiceClient,
     QuestionServiceClient,
+    QuizAttemptServiceClient,
     Constants
   ],
   bootstrap: [AppComponent]
