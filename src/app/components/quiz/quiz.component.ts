@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionServiceClient} from '../../services/QuestionServiceClient';
 import {QuizServiceClient} from '../../services/QuizServiceClient';
 import {QuizAttemptServiceClient} from '../../services/QuizAttemptServiceClient';
@@ -14,7 +14,8 @@ export class QuizComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private questionService: QuestionServiceClient,
               private quizService: QuizServiceClient,
-              private quizAttemptService: QuizAttemptServiceClient) {
+              private quizAttemptService: QuizAttemptServiceClient,
+              private router: Router) {
   }
 
   layout = '';
@@ -26,7 +27,7 @@ export class QuizComponent implements OnInit {
   submitQuiz = () => {
     this.quizAttemptService.submitAttempt(this.quizId, this.questions)
       .then(result => {
-        console.log('DEBUG: RESULT', result);
+        this.router.navigate([`/${this.layout}/courses/${this.courseId}/quizzes`]);
       });
   };
 

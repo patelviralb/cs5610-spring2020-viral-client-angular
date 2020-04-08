@@ -9,15 +9,24 @@
     </nav>
   </div>
   <div class="container">
-    <ul class="list-group">
+    <ul class="list-group mt-4">
       <li *ngFor="let eachQuiz of quizzes" class="list-group-item">
-        <a routerLink="/{{layout}}/courses/{{courseId}}/quizzes/{{eachQuiz._id}}">
-          {{eachQuiz.title}}
-        </a>
-        <a class="btn btn-primary float-right"
-           routerLink="/{{layout}}/courses/{{courseId}}/quizzes/{{eachQuiz._id}}">
-          Start
-        </a>
+        <div class="mb-4">
+          <a routerLink="/{{layout}}/courses/{{courseId}}/quizzes/{{eachQuiz._id}}">
+            {{eachQuiz.title}}
+          </a>
+          <a class="btn btn-primary float-right"
+             routerLink="/{{layout}}/courses/{{courseId}}/quizzes/{{eachQuiz._id}}">
+            Start
+          </a>
+        </div>
+        <div class="" *ngFor="let attemptArray of attempts">
+          <ul class="list-group" *ngFor="let eachAttempt of attemptArray; let i=index">
+            <li class="alert-warning list-group-item" *ngIf="eachAttempt.quizzes._id === eachQuiz._id">
+              Attempt {{i+1}} - Score: {{eachAttempt.score}}
+            </li>
+          </ul>
+        </div>
       </li>
     </ul>
   </div>
